@@ -15,3 +15,12 @@ https://drive.google.com/drive/u/2/folders/1LO5ECgElLK_vn3riq32fK7XN1ka2Rke7
 
 Elinvar FrontEnd Automation Solution Architecture and explanation
 https://docs.google.com/document/d/1GU2fbqS9XmGFtaLIp0pOOFohm1IJz6rQcSNI4mYsa_8/edit#heading=h.ogywb3s1tnho
+
+TestCases
+https://docs.google.com/spreadsheets/d/1yg_wn94WPmSalbNY_gYfiKdRPKVj_MBbRvZAkkcBMW8/edit#gid=0
+
+Defects List
+https://docs.google.com/spreadsheets/d/1lpNWD0QzGKnrkpewPEZIqMlW02YDzwuxw4QJymKrkfU/edit#gid=0
+
+Limitations
+https://docs.google.com/document/d/1qF8Edl8wlcGz0reQ2-KRc_LQkrFDKLxwuUFpYIROscQ/edit#
