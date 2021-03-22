@@ -12,3 +12,6 @@ Steps to Run :
 
 Demo link for execution of feature files :
 https://drive.google.com/drive/u/2/folders/1LO5ECgElLK_vn3riq32fK7XN1ka2Rke7
+
+Elinvar FrontEnd Automation Solution Architecture and explanation
+https://docs.google.com/document/d/1GU2fbqS9XmGFtaLIp0pOOFohm1IJz6rQcSNI4mYsa_8/edit#heading=h.ogywb3s1tnho
