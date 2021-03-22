@@ -1,0 +1,33 @@
+{
+  "proxy": "http://localhost:5000",
+  "name": "elinvar-front-case",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "cypress": "^6.8.0",
+    "cypress-cucumber-preprocessor": "^4.0.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  },
+  "scripts": {
+    "startapi": "cd api && export FLASK_APP=app.py && flask run",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "homepage": "https://elinvar.de/",
+  "devDependencies": {
+    "cypress-xpath": "^1.6.2"
+  }
+}

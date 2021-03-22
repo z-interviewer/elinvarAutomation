@@ -1,0 +1,7 @@
+  {
+    "testFiles": "**/*.{feature,features}",
+    "env": {
+      "url": "http://localhost:3000/#/",
+      "apiurl": "http://localhost:3000/"
+    }
+  }
