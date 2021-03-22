@@ -9,3 +9,6 @@ Steps to Run :
    b) elinvarPostAPIAddAssets.feature (for running API Backend tests)
 4) select 1 of the feature file and it will start execution of the corresponding feature file
 5) Observe the corresponding execution results
+
+Demo link for execution of feature files :
+https://drive.google.com/drive/u/2/folders/1LO5ECgElLK_vn3riq32fK7XN1ka2Rke7
