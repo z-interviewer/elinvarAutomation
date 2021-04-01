@@ -11,65 +11,58 @@ const existingAssets=new existingAssetsPage();
     
 //Step Defintions for Feature File tests
 Given('I open the Home Page for Elinvar QA', () => {
-//url configured in cypress.json file
-cy.visit(Cypress.env('url'));
+ //url configured in cypress.json file
+ cy.visit(Cypress.env('url')); // this is not needed. use baseURL in cypress.json
+}) //?
 
 And('I navigate to Add Asset Page', () => {
   addAsset.getAddAsset().click()
   description.getDescription().click();
   addAsset.getAddAsset().click()
-
-
+}) //??
+ 
+//don't clobber all possible scenarios inside single function.
+//follow good practices on formating code.
 Then('on adding below new Assets response is verified for different Asset formats and validation Messages', datatable => {
-//Repeat for all the scenarios described in the feature file table  
-datatable.hashes().forEach(row => {   
-
-   
-
-    //asserting that Send button is not disabled
-    addAsset.getAssetName().should('not.be.disabled');
-
-    //asserting that label has text New Asset
-    addAsset.getAssetButtonLabel().invoke("text").should("eq", 'New Asset');
+  //Repeat for all the scenarios described in the feature file table  
+  datatable.hashes().forEach(row => {   
+  //asserting that Send button is not disabled
+  addAsset.getAssetName().should('not.be.disabled');
+  //asserting that label has text New Asset
+  addAsset.getAssetButtonLabel().invoke("text").should("eq", 'New Asset');
+  //Entering Asset Names whenever Asset Name passed is not empty
+  if (row.AssetName !== "") {
+   addAsset.getAssetName().click().type(row.AssetName);
+  }
   
-//Entering Asset Names whenever Asset Name passed is not empty
-if (row.AssetName !== "") {
-addAsset.getAssetName().click().type(row.AssetName);
-}
-
-//Click the Send button
-addAsset.getSendAsset().click();
-console.log('Asset Name is',row.AssetName);
-
-
-//covering all valid & invalid scenarios as well as validation messages such as "Please match the format requested.","Please fill in this field.",
-//"Duplicate record not allowed", "Incorrect format", "Correct format"
-if (row.AssetFormat === "Incorrect format" && row.AssetName !== ""){
-addAsset.getInvalidAsset().invoke("text").should("eq", row.AssetFormat);
-addAsset.getAssetName().invoke('prop', 'validationMessage')
-  .should('equal', row.validationMessage)
-} else if (row.AssetFormat === "Incorrect format" && row.AssetName == "") {
+   //Click the Send button
+  addAsset.getSendAsset().click();
+  console.log('Asset Name is',row.AssetName);
+   
+  //covering all valid & invalid scenarios as well as validation messages such as "Please match the format requested.","Please fill in this field.",
+  //"Duplicate record not allowed", "Incorrect format", "Correct format"
+  //Structure code more logical to avoid if/else spagetification. 
+   if (row.AssetFormat === "Incorrect format" && row.AssetName !== ""){
     addAsset.getInvalidAsset().invoke("text").should("eq", row.AssetFormat);
     addAsset.getAssetName().invoke('prop', 'validationMessage')
-      .should('equal', row.validationMessage)
-} else if (row.AssetFormat === "Correct format" && row.validationMessage === ""){
+    .should('equal', row.validationMessage)
+  } else if (row.AssetFormat === "Incorrect format" && row.AssetName == "") {
+    addAsset.getInvalidAsset().invoke("text").should("eq", row.AssetFormat);
+    addAsset.getAssetName().invoke('prop', 'validationMessage')
+    .should('equal', row.validationMessage)
+  } else if (row.AssetFormat === "Correct format" && row.validationMessage === ""){
     addAsset.getValidAsset().invoke("text").should("eq", row.AssetFormat);
     //validating the colour of message "Correct format"
     //rgb(40, 167, 69) corresponds to green colour for Correct format text
-    addAsset.getValidAsset().should('have.css', 'color', 'rgb(40, 167, 69)')
-} else {
+    //bouding test to some "exact" value is not good practice. 
+   addAsset.getValidAsset().should('have.css', 'color', 'rgb(40, 167, 69)')
+  } else {
     addAsset.getAssetName().invoke('prop', 'validationMessage')
-      .should('equal', row.validationMessage)
-}
+    .should('equal', row.validationMessage)
+  }
 
-        addAsset.getAssetName().clear();
-
-        existingAssets.getExistingAssets().click();
-        existingAssets.getExistingAssets().invoke("text").should("eq", 'Existing Assets');
-        addAsset.getAddAsset().click()
-
-
-    })
-})
-})
+  addAsset.getAssetName().clear();
+  existingAssets.getExistingAssets().click();
+  existingAssets.getExistingAssets().invoke("text").should("eq", 'Existing Assets');
+  addAsset.getAddAsset().click()
 })
