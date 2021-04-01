@@ -1,6 +1,15 @@
-Feature: Automation for API tests of Frontend test-developer technical assignment
-Scenario: Sending POST request for Adding different combintations of Assets, validating responses
- 
+Feature: API tests for addAsset endpoiny
+
+#this should be worded more clearly, something like
+# Scenario: addAsset POST test
+#    When I .... 
+#    Then I see endpoint returned 201
+
+
+#also 
+#use simple constructions, use AND as seperate statement
+#use scenario outline functionallity 
+Scenario: Sending POST request for Adding different combintations of Assets, validating responses 
 Given I prepare the base url to add Assets to hit addAsset endpoint
 Then for making POST requests for below Asset Names Response should be 201 and receive corresponding message in response
 | AssetName        | AssetFormat       | Response  | 
